@@ -1,16 +1,32 @@
+import os
 import sys
 
 
 class StatusParser:
-    def __init__(self, filename: str):
+    def __init__(self, project: str, filename: str = "status_out.txt"):
+        self.project = project
         self.filename = filename
 
-    def read_status(self):
-        with open(self.filename) as txt:
+    def find_output(self) -> None:
+        for root, _, files in os.walk(self.project):
+            if self.filename in files:
+                file_index = files.index(self.filename)
+                self.abs_path = os.path.abspath(
+                    os.path.join(
+                        root,
+                        files[file_index])
+                )
+                break
+        else:
+            raise FileNotFoundError(f"File {self.filename} does not exists!")
+
+    def read_status(self, path: str) -> None:
+        with open(path) as txt:
             self.status = txt.readlines()
 
-    def parse_status(self):
-        return [line.strip() for line in self.status]
+    @staticmethod
+    def parse_status(status: list) -> list:
+        return [line.strip() for line in status]
 
     @staticmethod
     def sort_status(source: list, status: dict = None) -> dict:
@@ -33,11 +49,15 @@ class StatusParser:
 
 
 if __name__ == "__main__":
-    # status_file = sys.argv[1]
-    parser = StatusParser("./samples/testing_status.txt")
-    parser.read_status()
-    status = parser.parse_status()
-    sorted_status = parser.sort_status(status)
-    # from pprint import pprint
-    # pprint(sorted_status)
+    # arg parser with '--help'
+    project = sys.argv[1]
+
+    parser = StatusParser(project)
+    parser.find_output()
+    parser.read_status(parser.abs_path)
+    parsed_status = parser.parse_status(parser.status)
+    sorted_status = parser.sort_status(parsed_status)
+
+    from pprint import pprint
+    pprint(sorted_status)
 

@@ -67,9 +67,10 @@ if __name__ == "__main__":
         for lesson in content:  # 01_lesson, 02_lesson
             for chapter in lesson:  # 00_introduction, 01_..., notes.txt
                 if chapter == file:
-                    return chapter["id"]
+                    return lesson.get(chapter)
                 else:
-                    return False
+                    continue
+        return False
 
 
     tested_status_3 = {
