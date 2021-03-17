@@ -1,5 +1,4 @@
 import os
-import sys
 
 
 class StatusParser:
@@ -46,18 +45,4 @@ class StatusParser:
                 status["untraced"].append(line.split(maxsplit=1)[1])
 
         return status
-
-
-if __name__ == "__main__":
-    # arg parser with '--help'
-    project = sys.argv[1]
-
-    parser = StatusParser(project)
-    parser.find_output()
-    parser.read_status(parser.abs_path)
-    parsed_status = parser.parse_status(parser.status)
-    sorted_status = parser.sort_status(parsed_status)
-
-    from pprint import pprint
-    pprint(sorted_status)
 
