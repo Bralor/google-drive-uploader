@@ -1,5 +1,4 @@
 import os
-import sys
 
 
 def split_path(all_paths: list, result = None) -> dict:
@@ -27,21 +26,4 @@ def parse_path(split_path: list) -> dict:
     elif len(split_path) == 1:
         notebook = split_path[-1]
         return {"notebook": notebook}
-
-
-if __name__ == "__main__":
-    # tested_dict = {
-        # 'headline': ['content-dev...origin/content-dev'],
-        # 'traced':   ['materials/01_intro_to_programming/00_introduction.ipynb'],
-        # 'untraced': [
-            # 'materials/01_intro_to_programming/.ipynb_checkpoints/',
-            # 'status.txt'
-        # ]
-    # }
-    tested_dict = sys.argv[1]
-
-    for line in tested_dict:
-        splitted_path = split_path(tested_dict.get(line))
-        from pprint import pprint
-        pprint(splitted_path)
 
