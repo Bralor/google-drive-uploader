@@ -23,6 +23,20 @@ class StatusParser:
         with open(path) as txt:
             self.status = txt.readlines()
 
+    @classmethod
+    def create_instance(cls, path):
+        parser = cls(path)
+        print(f"Running main script..")
+
+        parser.find_output()
+        parser.read_status(parser.abs_path)
+        parsed_status = parser.parse_status(parser.status)
+
+        return (
+            os.path.dirname(parser.abs_path),  # dirname
+            parser.sort_status(parsed_status)  # sorted_status
+        )
+
     @staticmethod
     def parse_status(status: list) -> list:
         return [line.strip() for line in status]
