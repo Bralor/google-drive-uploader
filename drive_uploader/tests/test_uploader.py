@@ -1,5 +1,5 @@
 import pytest
-from src.uploader import GDrive
+from drive_uploader.src.uploader import GDrive
 
 
 class TestGUploader:

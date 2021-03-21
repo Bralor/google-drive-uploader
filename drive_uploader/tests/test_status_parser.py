@@ -1,7 +1,7 @@
 import pytest
 from unittest.mock import Mock
 
-from src.status_parser import StatusParser
+from drive_uploader.src.status_parser import StatusParser
 
 DEFAULT_TXT = [
     '## content-dev...origin/content-dev\n',

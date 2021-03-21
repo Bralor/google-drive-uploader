@@ -2,9 +2,9 @@
 import os
 import argparse
 
-from src.status_parser import StatusParser
-from src.file_sorter import split_path
-from src.uploader import GDrive
+from drive_uploader.src.status_parser import StatusParser
+from drive_uploader.src.file_sorter import split_path
+from drive_uploader.src.uploader import GDrive
 
 
 def main():

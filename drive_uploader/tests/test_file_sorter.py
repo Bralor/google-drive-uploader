@@ -1,6 +1,6 @@
 import os
 import pytest
-from src.file_sorter import split_path, parse_path
+from drive_uploader.src.file_sorter import split_path, parse_path
 
 PATH_1 = ['00_introduction.ipynb']
 PATH_2 = ['01_intro_to_programming/00_introduction.ipynb']
