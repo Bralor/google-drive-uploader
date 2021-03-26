@@ -11,7 +11,7 @@ def split_path(all_paths: list, result = None) -> dict:
     return result
 
 
-def parse_path(split_path: list) -> dict:
+def parse_path(split_path: list):
     if len(split_path) == 3:
         root = split_path[-3]
         lesson = split_path[-2]
