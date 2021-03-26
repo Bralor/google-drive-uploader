@@ -2,13 +2,14 @@
 import os
 import argparse
 
-from drive_uploader.src.status_parser import StatusParser
-from drive_uploader.src.file_sorter import split_path
-from drive_uploader.src.uploader import GDrive
+from src.status_parser import StatusParser
+from src.file_sorter import split_path
+from src.uploader import GDrive
 
 
-def main():
-    dirname, sorted_status = StatusParser(args.upload).create_instance(args.upload)
+def main() -> None:
+    dirname, sorted_status = StatusParser(args.upload).create_instance(
+        args.upload)
 
     all_updates = [
         split_path(sorted_status.get(line))
