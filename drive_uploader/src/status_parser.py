@@ -33,8 +33,8 @@ class StatusParser:
         parsed_status = parser.parse_status(parser.status)
 
         return (
-            os.path.dirname(parser.abs_path),  # dirname
-            parser.sort_status(parsed_status)  # sorted_status
+            os.path.dirname(parser.abs_path),
+            parser.sort_status(parsed_status)
         )
 
     @staticmethod
